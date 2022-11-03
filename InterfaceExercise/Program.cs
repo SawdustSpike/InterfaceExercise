@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace InterfaceExercise
 {
@@ -6,39 +7,46 @@ namespace InterfaceExercise
     {
         static void Main(string[] args)
         {
-            //TODO Be sure to follow BEST PRACTICES when creating classes and interfaces
-
-            //Create 2 Interfaces called IVehicle & ICompany
-
-            //Create 3 classes called Car , Truck , & SUV
-
-            //In your IVehicle
-            
-                /* Create 4 members that Car, Truck, & SUV all have in common.
-                 * Example: All vehicles have a number of wheels... for now..
-                 */
-            
-
-            //In ICompany
-            
-                /*Create 2 members that are specific to each every company
-                 * regardless of vehicle type.
-                 *
-                 *
-                 * Example: public string Logo { get; set; }
-                 */
-
-            //In each of your car, truck, and suv classes
-
-                /*Create 2 members that are specific to each class
-                 * Example: truck has a bed size while car has a trunk while suv has a cargo hold size
-                 *
-                 * Then, Set each class to inherit from both IVehicle and ICompany and implement their members.
-                 * 
-                 */
-
-            //Now, create objects of your 3 classes and give their members values;
-            //Creatively display and organize their values
+            var vList = new List<IVehicle>();
+            var f150 = new Truck()
+            {
+                HasOffensiveBumperStickers = true,
+                HasTruckNuts = true,
+                Name = "Ford F150",
+                Wheels = 4,
+                Cost = 34585,
+                IsLemon = false,
+                IsOwnedByMusk = false,
+            };
+            var tesla = new Car()
+            {
+                CanBounce = false,
+                GradeThisCar = "B+",
+                Name = "Tesla Coil I think, I'm not looking it up",
+                Wheels = 4,
+                Cost = 45000,
+                IsLemon = false,
+                IsOwnedByMusk = true,
+            }; 
+            SUV crV = new()
+            {
+                HasHitMeOnBike = true,
+                SaySomethignNice = "It has a sturdy windsheild",
+                Name = "CR-V",
+                Wheels = 4,
+                Cost = 33550,
+                IsLemon = true,
+                IsOwnedByMusk = false,
+            };
+            vList.Add(crV);
+            vList.Add(tesla);
+            vList.Add(f150);
+            foreach(var v in vList)
+            {
+                Console.WriteLine($"Hey, wanna buy a {v.Name}? It's got {v.Wheels} wheels and only costs ${v.Cost}. I'm sure you'll love it.");
+                v.KickTheVehicle();            
+            }
         }
     }
 }
+
